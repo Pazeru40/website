@@ -2,45 +2,68 @@
 <html lang="ja">
 <head>
 	<meta charset="utf-8">
-	<title>数字並べゲーム</title>
+	<title>じゃんけんゲーム</title>
 	<link rel="stylesheet" type="text/css" 
 	href="css/default.css">
 	<script type="text/javascript">
-		var str=[1,2,3,4,5,6,7,8,9];
-			for(var i = str.length - 1; i > 0; i--){
-    			var r = Math.floor(Math.random() * (i + 1));
-   				var tmp = str[i];
-    			str[i] = str[r];
-   				str[r] = tmp;
+		function janken(a){
+			if (a==1) {
+				document.getElementById('jibun').innerHTML="<img src=images/janken_gu.png>"
+			}else if (a==2) {
+				document.getElementById('jibun').innerHTML="<img src=images/janken_choki.png>"
+			}else if (a==3) {
+				document.getElementById('jibun').innerHTML="<img src=images/janken_pa.png>"
 			}
-		function start(){
-			for (var i = 0; i < 9; i++) {
-				j=i+1;
-				document.getElementById('suuji'+j).innerHTML="<img src=images/"+str[i]+".jpg>"
+			var te = Math.floor(Math.random()*3)+1;
+			if (te==1) {
+				document.getElementById('aite').innerHTML="<img src=images/janken_gu.png>"
+
+			}else if (te==2) {
+				document.getElementById('aite').innerHTML="<img src=images/janken_choki.png>"
+			}else if (te==3) {
+				document.getElementById('aite').innerHTML="<img src=images/janken_pa.png>"
 			}
-		}
-		function idou(a){
-			
+			if (te==a) {
+				document.getElementById('katimake').innerHTML="あいこ"
+			}else if (te==1 && a==2 || te==2 && a==3 || te==3 && a==1) {
+				document.getElementById('katimake').innerHTML="あなたの負け"
+			}else{
+				document.getElementById('katimake').innerHTML="あなたの勝ち"
+			}
 		}
 	</script>
 </head>
 <body>
-	<div id="dai">
-		 数字並べゲーム
+	<div id="moji1">
+		じゃんけんゲーム
 	</div>
-	<div class="suuji" id="suuji1" onclick="idou(0)"></div>
-	<div class="suuji" id="suuji2" onclick="idou(1)"></div>
-	<div class="suuji" id="suuji3" onclick="idou(2)"></div>
+	<div class="hito">
+		相手
+	</div>
+	<div class="hand" id="aite">
+		
+	</div>
+	<div id="katimake">
+		
+	</div>
+	<div class="hand" id="jibun">
+		
+	</div>
+	<div class="hand2">
+		<img src="images/janken_gu.png" onclick="janken(1)">
+	</div>
+
+	<div class="hand2">
+		<img src="images/janken_choki.png" 
+		onclick="janken(2)">
+	</div>
+	<div class="hand2">
+		<img src="images/janken_pa.png" onclick="janken(3)">
+	</div>
 	<div class="floatclear"></div>
-	<div class="suuji" id="suuji4" onclick="idou(3)"></div>
-	<div class="suuji" id="suuji5" onclick="idou(4)"></div>
-	<div class="suuji" id="suuji6" onclick="idou(5)"></div>
-	<div class="floatclear"></div>
-	<div class="suuji" id="suuji7" onclick="idou(6)"></div>
-	<div class="suuji" id="suuji8" onclick="idou(7)"></div>
-	<div class="suuji" id="suuji9" onclick="idou(8)"></div>
-	<div class="floatclear"></div>
-	<input type="button" name="sutaato" value="スタート" onclick="start()">
-	<div id="kaisuu"></div>
+	<div class="hito">
+		あなた
+	</div>
+
 </body>
 </html>
