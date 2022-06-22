@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang='ja'>
+<html lang="ja">
 <head>
-  <meta charset='utf-8'>
-  <title>私のホームページ</title>
-  <meta property="og:title" content="たいとる">
-  <meta property="og:description" content="せつめいせつめい">
-  <meta name="theme-color" content="#ECECF7">
-  <meta name="msapplication-TileColor" content="#ECECF7">
-  <link rel="icon" type="image/png" xhref="icon.png">
-  <link rel="apple-touch-icon" xhref="icon.png">
-  <meta name="msapplication-square310x310logo" xcontent="icon.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:image" content="https://yourdomain/ogp.jpg">
-  <meta name="twitter:image" content="https://yourdomain/ogp.jpg">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-
-  <link rel="stylesheet" href="index.css">
+	<meta charset="utf-8">
+	<title>数字並べゲーム</title>
+	<link rel="stylesheet" type="text/css" 
+	href="css/default.css">
+	<script type="text/javascript">
+		var str=[1,2,3,4,5,6,7,8,9];
+			for(var i = str.length - 1; i > 0; i--){
+    			var r = Math.floor(Math.random() * (i + 1));
+   				var tmp = str[i];
+    			str[i] = str[r];
+   				str[r] = tmp;
+			}
+		function start(){
+			for (var i = 0; i < 9; i++) {
+				j=i+1;
+				document.getElementById('suuji'+j).innerHTML="<img src=images/"+str[i]+".jpg>"
+			}
+		}
+		function idou(a){
+			
+		}
+	</script>
 </head>
 <body>
-  <div class=header>
-    <h1>私のホームページ</h1>
-    <div>せつめいせつめい</div>
-  </div>
-  <div class=main>
-    <div>
-      <h2>さぶたいとる１</h2>
-      <div>
-        ほんぶん１
-      </div>
-    </div>
-
-    <div>
-      <h2>さぶたいとる２</h2>
-      <div>
-        ほんぶん２
-      </div>
-    </div>
-  </div>
-  <div class=footer>
-    ふったー
-  </div>
+	<div id="dai">
+		 数字並べゲーム
+	</div>
+	<div class="suuji" id="suuji1" onclick="idou(0)"></div>
+	<div class="suuji" id="suuji2" onclick="idou(1)"></div>
+	<div class="suuji" id="suuji3" onclick="idou(2)"></div>
+	<div class="floatclear"></div>
+	<div class="suuji" id="suuji4" onclick="idou(3)"></div>
+	<div class="suuji" id="suuji5" onclick="idou(4)"></div>
+	<div class="suuji" id="suuji6" onclick="idou(5)"></div>
+	<div class="floatclear"></div>
+	<div class="suuji" id="suuji7" onclick="idou(6)"></div>
+	<div class="suuji" id="suuji8" onclick="idou(7)"></div>
+	<div class="suuji" id="suuji9" onclick="idou(8)"></div>
+	<div class="floatclear"></div>
+	<input type="button" name="sutaato" value="スタート" onclick="start()">
+	<div id="kaisuu"></div>
 </body>
 </html>
